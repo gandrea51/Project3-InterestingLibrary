@@ -1,0 +1,168 @@
+/* Generale per la pagina di registrazione */
+.sign-introduction {
+    background: linear-gradient(135deg, rgba(213, 0, 0, 0.9), rgba(255, 75, 75, 0.8));
+    color: white;
+    padding: 4rem 2rem;
+    border-radius: 15px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    margin-bottom: 3rem;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.sign-title h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    color: #fff;
+    background: linear-gradient(90deg, #ff4949, #fff);
+    --webkit-background-clip: text;
+    --webkit-text-fill-color: transparent;
+}
+
+.sign-title p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Error message section */
+.sign-error {
+    margin-bottom: 2rem;
+}
+
+.alert {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    font-size: 1.1rem;
+    background-color: rgba(255, 75, 75, 0.9);
+    color: white;
+    border-radius: 5px;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.alert:hover {
+    background-color: rgba(255, 0, 0, 0.9);
+    transform: scale(1.05);
+}
+
+/* Form section */
+.sign-form {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 3rem;
+    border-radius: 15px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.form-group {
+    margin-bottom: 2rem;
+}
+
+.form-label {
+    font-size: 1.2rem;
+    color: #fff;
+    margin-bottom: 0.8rem;
+}
+
+.form-control {
+    padding: 1rem;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    border: 2px solid #ff4949;
+    background-color: #fff;
+    color: #333;
+    transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #ff4949;
+    outline: none;
+    box-shadow: 0 0 10px rgba(255, 75, 75, 0.7);
+}
+
+.form-select {
+    padding: 1rem;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    border: 2px solid #ff4949;
+    background-color: #fff;
+    color: #333;
+    transition: border-color 0.3s ease;
+}
+
+.form-select:focus {
+    border-color: #ff4949;
+    outline: none;
+    box-shadow: 0 0 10px rgba(255, 75, 75, 0.7);
+}
+
+/* Submit button */
+.btn-sign {
+    background-color: #3e41eb;
+    color: white;
+    padding: 1rem;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-sign:hover {
+    background-color: #d30000;
+    transform: translateY(-5px);
+}
+
+/* Message section */
+.sign-message {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.sign-message-info p {
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+.sign-message-info .sign {
+    font-weight: bold;
+    color: #4a55f0;
+    text-decoration: none;
+}
+
+.sign-message-info .sign:hover {
+    text-decoration: underline;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+    .sign-introduction {
+        padding: 3rem 1rem;
+    }
+
+    .sign-title h2 {
+        font-size: 2rem;
+    }
+
+    .sign-title p {
+        font-size: 1rem;
+    }
+
+    .sign-form {
+        padding: 2rem;
+    }
+
+    .form-label, .form-control, .form-select {
+        font-size: 1rem;
+    }
+
+    .btn-sign {
+        font-size: 1rem;
+    }
+
+    .sign-message-info p {
+        font-size: 1rem;
+    }
+}

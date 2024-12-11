@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+    {% block styles %}
+        <link rel="stylesheet" href="/static/css/about.css">
+    {% endblock %}
+
+    {% block title %}About{% endblock %}
+
+    {% block main %}
+        <section class="container about-introduction">
+            <div class="about-title">
+                <h1>Chi Siamo</h1>
+                <p>Un team dedicato al sapere condiviso e all'innovazione.</p>
+            </div>
+        </section>
+        
+        <section class="container about-team">
+            <div class="about-team-member">
+                <img src="/static/images/team1.jpg" alt="Team Member 1" class="team-member-photo">
+                <h3 class="team-member-name">Giulio Rosso</h3>
+                <p class="team-member-role">Fondatore & CEO</p>
+                <p class="team-member-bio">Con un background in tecnologia e passione per la condivisione del sapere, Giulio ha fondato Arché Ferrara con l'obiettivo di creare un punto di riferimento per la cultura e l'innovazione.</p>
+            </div>
+        
+            <div class="about-team-member">
+                <img src="/static/images/team2.jpg" alt="Team Member 2" class="team-member-photo">
+                <h3 class="team-member-name">Valentina Verde</h3>
+                <p class="team-member-role">Responsabile Marketing</p>
+                <p class="team-member-bio">Valentina si occupa di creare strategie di comunicazione coinvolgenti e innovative, contribuendo a far crescere il nostro marchio e a diffondere il nostro messaggio di sapere condiviso.</p>
+            </div>
+        
+            <div class="about-team-member">
+                <img src="/static/images/team3.jpg" alt="Team Member 3" class="team-member-photo">
+                <h3 class="team-member-name">Marco Giallo</h3>
+                <p class="team-member-role">Sviluppatore Senior</p>
+                <p class="team-member-bio">Marco è il cuore tecnico del nostro team, sviluppando soluzioni software avanzate per garantire che la nostra piattaforma funzioni senza intoppi e con una user experience unica.</p>
+            </div>
+        </section>
+        
+        <section class="container about-mission">
+            <h2>La nostra missione</h2>
+            <p>Il nostro obiettivo è rendere il sapere accessibile a tutti. Condividere conoscenza e creare una comunità che cresce insieme è la nostra visione di un futuro migliore.</p>
+        </section>
+    
+    {% endblock %}

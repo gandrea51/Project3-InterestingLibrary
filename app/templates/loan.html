@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+    {% block styles %}
+        <link rel="stylesheet" href="/static/css/loan.css">
+    {% endblock %}
+
+    {% block title %}Loan{% endblock %}
+
+    {% block main %}
+
+        <section class="container loan-first-introduction">
+            <section class="loan-intro">
+                <h2 class="loan-intro-title">Overview of All Loans</h2>
+                <h4 class="loan-intro-subtitle">Manage loans efficiently with detailed insights</h4>
+            </section>
+        </section>
+        
+        <section class="container loan-second-introduction">
+            <section class="loan-second-intro">
+                <p class="loan-second-paragraph">
+                    This page provides a comprehensive overview of all current loans, specifically designed for managers who need a detailed 
+                    view of loan management. Navigate through different categories to monitor loans due to maturity, unresolved loans, and 
+                    statistics on loan activities. Each section is enhanced with clear visual indicators and actionable options, including 
+                    downloading PDF reports or closing loans directly.
+                </p>
+            </section>
+        </section>
+        
+        <section class="container loan-third-area">
+            <section class="loan-first-area">
+                <!-- Loans Due to Maturity -->
+                <a href="/loan/due" class="loan-link">
+                    <i class="fas fa-clock loan-icon"></i>
+                    <p>View loans approaching maturity deadlines</p>
+                </a>
+        
+                <!-- Loans Not Repaid -->
+                <a href="/loan/not-repaid" class="loan-link">
+                    <i class="fas fa-exclamation-triangle loan-icon"></i>
+                    <p>Explore unresolved loans for immediate action</p>
+                </a>
+        
+                <!-- Statistics on Loans -->
+                <a href="/loan/statistics" class="loan-link">
+                    <i class="fas fa-chart-bar loan-icon"></i>
+                    <p>Analyze loan statistics and performance metrics</p>
+                </a>
+            </section>
+        </section>
+        
+        <section class="container loan-fourth-area">
+            <section class="loan-second-area">
+                <!-- View All the Loans -->
+                <a href="/loan/all" class="loan-link">
+                    <i class="fas fa-list loan-icon"></i>
+                    <p>Browse a complete list of all loans in the system</p>
+                </a>
+            </section>
+        </section>
+    
+    {% endblock %}

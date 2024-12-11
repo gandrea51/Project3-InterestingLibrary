@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+    {% block styles %}
+        <link rel="stylesheet" href="/static/css/sign.css">
+    {% endblock %}
+
+    {% block title %}Sign in{% endblock %}
+
+    {% block main %}
+        <section class="container sign-introduction">
+            <section class="sign-title">
+                <h2 class="sign-first-title">Accedi al tuo Account</h2>
+                <p class="sign-second-title">Inserisci le tue informazioni per accedere.</p>
+            </section>
+        </section>
+
+        <section class="container sign-error">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <ul class="list-unstyled">
+                        {% for category, message in messages %}
+                            <li class="alert alert-{{ category }}">{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+        </section>
+
+        <section class="container sign-form">
+            <form method="post" action="/signin">
+
+                <div class="form-group mb-3">
+                    <label for="email" class="form-label">Indirizzo Email</label>
+                    <input id="email" type="email" class="form-control" name="email" placeholder="Inserisci la tua email" required>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input id="password" type="password" class="form-control" name="password" placeholder="Crea una password" required>
+                </div>
+
+                <div class="d-grid mb-3">
+                    <input type="submit" class="btn-sign" value="Sign in">
+                </div>
+            </form>
+        </section>
+
+        <section class="container sign-message">
+            <section class="sign-message-info">
+                <p class="sign-message-p">Non hai ancora un account? <a href="/signup" class="sign">Registrati</a></p>
+            </section>
+        </section>
+    {% endblock %}

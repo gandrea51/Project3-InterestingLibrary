@@ -1,0 +1,98 @@
+{% extends "layout.html" %}
+    {% block styles %}
+        <link rel="stylesheet" href="/static/css/moduli.css">
+        <link rel="stylesheet" href="/static/css/bmanager.css">
+    {% endblock %}
+
+    {% block title %}Book{% endblock %}
+
+    {% block main %}
+        <section class="container book-second-block">
+            <section class="book-second-header">
+                <h2 class="book-second-title">Gestione della Biblioteca</h2>
+                <p class="book-second-subtitle">
+                    Aggiungi nuovi titoli alla tua collezione e tieni traccia delle informazioni sui libri disponibili. 
+                </p>
+            </section>
+        </section>
+        
+        <section class="container book-modulo">
+            <form action="/book/create" method="POST" class="general-form">
+                <div class="form-group mb-4">
+                    <label for="title">Titolo</label>
+                    <input required id="title" class="form-control" name="title" type="text" placeholder="Inserisci il titolo del libro">
+                    <small class="form-text">Come si chiama il libro?</small>
+                </div>
+        
+                <div class="form-group mb-4">
+                    <label for="year">Anno</label>
+                    <input required id="year" class="form-control" name="year" type="text" placeholder="Inserisci l'anno di pubblicazione del libro">
+                    <small class="form-text">Quando è stato scritto?</small>
+                </div>        
+        
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="classification">Classificazione</label>
+                            <input required id="classification" class="form-control" name="classification" type="text" placeholder="Classificazione del libro">
+                            <small class="form-text">Come è classificato il libro?</small>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="position">Posizione</label>
+                            <input required id="position" class="form-control" name="position" type="text" placeholder="Posizione del libro">
+                            <small class="form-text">Dove si trova il libro?</small>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="row mb-4">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="author">Autore</label>
+                            <input required id="author" class="form-control" name="author" type="text" placeholder="Autore del libro">
+                            <small class="form-text">Chi ha scritto il libro?</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="genre">Genere</label>
+                            <input required id="genre" class="form-control" name="genre" type="text" placeholder="Genere del libro">
+                            <small class="form-text">A quale genere appartiene?</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="necklace">Collana</label>
+                            <input id="necklace" class="form-control" name="necklace" type="text" placeholder="Collana del libro">
+                            <small class="form-text">A quale collana appartiene, se ne ha una?</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="publisher">Editore</label>
+                            <input required id="publisher" class="form-control" name="publisher" type="text" placeholder="Casa editrice del libro">
+                            <small class="form-text">Chi ha pubblicato il libro?</small>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="form-group mb-4">
+                    <label for="note">Note Aggiuntive</label>
+                    <textarea id="note" class="form-control" name="note" rows="3" placeholder="Note sul libro"></textarea>
+                    <small class="form-text">Vi sono note aggiuntive per il libro?</small>
+                </div>
+        
+                <div class="form-group mb-4">
+                    <label for="copy">Copie</label>
+                    <input required id="copy" class="form-control" name="copy" type="number" min="0" max="10" step="1" placeholder="Copie del libro">
+                    <small class="form-text">Quante copie sono disponibili per il libro?</small>
+                </div>
+                
+                <button type="submit" class="button-aggiungi">Conferma</button>
+            </form>
+        </section>
+        
+            
+    {% endblock %}

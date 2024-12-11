@@ -1,0 +1,153 @@
+/* Impostazioni di base per la sezione degli eventi */
+.container.event-first-area {
+    position: relative;
+    padding: 60px 0;
+    background-image: url('/static/images/eventall.jpg'); /* Cambia il percorso dell'immagine */
+    border-radius: 2%;
+    color: #fff; /* Testo bianco */
+    border-bottom: 5px solid #e74c3c; /* Linea sottile in rosso per accentuare */
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Stile per l'intestazione dell'evento */
+.event-first-header {
+    text-align: center;
+    padding: 20px;
+}
+
+/* Titolo dell'evento */
+.event-header {
+    font-size: 36px;
+    font-weight: 700;
+    color: #e74c3c; /* Rosso brillante */
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+/* Sottotitolo dell'evento */
+.event-subtitle {
+    font-size: 20px;
+    font-weight: 400;
+    color: #fff;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Effetto hover per il sottotitolo */
+.event-subtitle:hover {
+    color: #f39c12; /* Colore dorato al passaggio del mouse */
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+/* Responsività per i dispositivi mobili */
+@media (max-width: 768px) {
+    .event-header {
+        font-size: 28px;
+    }
+
+    .event-subtitle {
+        font-size: 18px;
+        max-width: 90%;
+    }
+}
+
+/* Container degli eventi */
+.container.event-area {
+    padding: 40px 20px;
+    background: #f8f1f1;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+/* Box che contiene gli eventi */
+.event-box {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+/* Singolo evento */
+.event-item {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Effetto hover sugli eventi */
+.event-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Titolo dell'evento */
+.event-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #e74c3c;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+    text-align: center;
+}
+
+/* Data dell'evento */
+.event-date {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Luogo dell'evento */
+.event-place {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Descrizione dell'evento */
+.event-details {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+/* Aggiungi un bordo rosso sottile sotto il titolo dell'evento */
+.event-title {
+    border-bottom: 2px solid #e74c3c;
+    padding-bottom: 5px;
+}
+
+/* Effetti di transizione */
+.event-item:hover .event-title {
+    color: #c0392b;
+}
+
+/* Responsive design per schermi più piccoli */
+@media (max-width: 768px) {
+    .container.event-area {
+        padding: 30px 10px;
+    }
+    
+    .event-item {
+        padding: 15px;
+    }
+
+    .event-title {
+        font-size: 20px;
+    }
+
+    .event-date {
+        font-size: 16px;
+    }
+}

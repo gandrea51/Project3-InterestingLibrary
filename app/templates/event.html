@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+    {% block styles %}
+        <link rel="stylesheet" href="/static/css/event.css">
+        <link rel="stylesheet" href="/static/css/book.css">
+    {% endblock %}
+
+    {% block title %}Event{% endblock %}
+
+    {% block main %}
+
+        <section class="container event-first-area">
+            <section class="event-first-header">
+                <h2 class="event-header">Esplora i Nostri Eventi letterari</h2>
+                <h4 class="event-subtitle">Scopri tutti gli eventi unici in programma nella tua zona e prenota subito il tuo posto!</h4>
+            </section>
+        </section>
+
+        <section class="container book-second-area">
+            <img src="/static/images/esecond.jpg" alt="Manager Area Image">
+            <p class="book-descr">
+                Questa è l'area dedicata alle operazioni manageriali sui libri. Qui puoi gestire, modificare e monitorare tutti i titoli disponibili nel sistema. 
+                Per favore, utilizza il pulsante sottostante per accedere a tutte le funzioni disponibili.
+                <br>
+                <a href="/event/manager" class="btn-manager">Apri Area Manager</a>
+            </p>
+        </section>
+
+        <section class="container event-area">
+            <section class="event-box">
+                {% for event in events %}
+                    <section class="event-item">
+                        <h3 class="event-title">{{ event.title }}</h3>
+                        <h5 class="event-date"><i class="fa fa-regular fa-clock"></i> Dal {{ event.date_start.strftime("%d %B %Y") }} <br>
+                            <i class="fa fa-solid fa-clock"></i> Al {{ event.date_end.strftime("%d %B %Y") }}</h5>
+                        <p class="event-place"><i class="fa fa-solid fa-location-dot"></i> Luogo: {{event.place}}</p>
+                        <p class="event-details">
+                            {{ event.description }}
+                        </p>
+                    </section>
+                {% endfor %}
+            </section>
+        </section>
+
+    {% endblock %}

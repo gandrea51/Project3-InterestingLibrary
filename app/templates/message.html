@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+    {% block styles %}
+        <link rel="stylesheet" href="/static/css/message.css">
+    {% endblock %}
+
+    {% block title %}Message{% endblock %}
+
+    {% block main %}
+    
+        <section class="container message-first-area">
+            <section class="message-first-header">
+                <h2 class="message-title">Leggi tutti i Messaggi</h2>
+                <h4 class="message-subtitle">Uno spazio dedicato a tutti i tuoi messaggi e commenti</h4>
+            </section>
+        </section>
+        
+        <section class="contianer message-second-area">
+            <section class="message-container">
+                {% for message in messages %}
+                    <section class="message-item">
+                        <h3 class="message-header">{{message.name}} ha scritto</h3>
+                        <p class="message-body">{{message.message}}</p>
+                        <small class="message-foot">il {{message.date_write.strftime('%d %B %Y')}} da {{message.email}}</small>
+                        <br>
+                        <small class="read-message">
+                            <a href="{{ url_for('main.read', id=message.id) }}" class="read-message-button">Leggi il messaggio</a>
+                        </small>
+                    </section>
+                {% else %}
+                    <section class="no-message">
+                        <h3 class="message-no">Nessun messaggio da leggere</h3>
+                    </section>
+                {% endfor %}
+            </section>
+        </section>
+    {% endblock %}

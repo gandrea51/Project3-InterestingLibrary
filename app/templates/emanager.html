@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+    {% block styles %}
+        <link rel="stylesheet" href="/static/css/bmanager.css">
+        <link rel="stylesheet" href="/static/css/book.css">
+    {% endblock %}
+
+    {% block title %}Event{% endblock %}
+
+    {% block main %}
+        <section class="container book-first-area">
+            <section class="book-first-header">
+                <h2 class="book-header">Esplora la Nostra Biblioteca</h2>
+                <h4 class="book-subtitle">Scopri nuovi eventi e lasciati ispirare dalle nostre collezioni</h4>
+            </section>
+        </section>
+
+        <section class="container book-second-block">
+            <section class="book-second-header">
+                <h2 class="book-second-title">Gestione degli Eventi</h2>
+                <p class="book-second-subtitle">
+                    Programma nuovi eventi e tieni traccia delle informazioni sugli eventi già programmati. 
+                    <br>
+                    <a href="/event/create" class="button-create">Programma un Nuovo Eventi</a>
+                </p>
+            </section>
+        </section>
+        
+
+        <section class="container book-third-block">
+            <section class="book-third-header">
+                <h2 class="book-third-title">Catalogo Eventi</h2>
+                <h4 class="book-third-subtitle">Esplora, cerca e gestisci tutti gli eventi.</h4>
+                <input type="text" id="searchInput" class="form-control" placeholder="Cerca un evento...">
+            </section>
+
+            <section class="book-list">
+                <h4 class="book-list-title">Tutti gli Eventi</h4>
+                <ul id="bookList" class="list-group">
+                    {% for event in events %}
+                    <li class="list-group-item book-item">
+                        <strong>{{ event.title }}</strong> a {{ event.place }}
+                        <div class="book-actions">
+                            <a href="{{ url_for('main.eput', id=event.id) }}" class="button-edit">Modifica</a>
+                            <form action="{{ url_for('main.edelete', id=event.id) }}" method="post" style="display:inline;">
+                                <button type="submit" class="button-delete" onclick="return confirm('Sei sicuro di voler eliminare questo libro?');">Elimina</button>
+                            </form>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </section>
+
+        </section>
+
+        <script>
+            // Funzione di ricerca
+            document.getElementById("searchInput").addEventListener("input", function() {
+                let filter = this.value.toLowerCase();
+                let items = document.querySelectorAll(".book-item");
+
+                items.forEach(item => {
+                    let title = item.querySelector("strong").innerText.toLowerCase();
+                    let place = item.innerText.toLowerCase();
+
+                    if (title.includes(filter) || place.includes(filter)) {
+                        item.style.display = "";
+                    } else {
+                        item.style.display = "none";
+                    }
+                });
+            });
+        </script>
+    {% endblock %}

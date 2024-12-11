@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+    {% block styles %}
+        <link rel="stylesheet" href="/static/css/sign.css">
+    {% endblock %}
+
+    {% block title %}Sign up{% endblock %}
+
+    {% block main %}
+        <section class="container sign-introduction">
+            <section class="sign-title">
+                <h2 class="sign-first-title">Crea un Nuovo Account</h2>
+                <p class="sign-second-title">Inserisci le tue informazioni per registrarti.</p>
+            </section>
+        </section>
+
+        <section class="container sign-error">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <ul class="list-unstyled">
+                        {% for category, message in messages %}
+                            <li class="alert alert-{{ category }}">{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+        </section>
+
+        <section class="container sign-form">
+            <form method="post" action="/signup">
+                <div class="form-group mb-3">
+                    <label for="name" class="form-label">Nome Completo</label>
+                    <input id="name" type="text" class="form-control" name="name" placeholder="Inserisci il tuo nome completo" required>
+                </div>
+
+                <div class="form-group mb-4">
+                    <label for="genre" class="form-label">Genere</label>
+                    <select class="form-select" name="genre" id="genre" required>
+                        <option value="M">Maschio</option>
+                        <option value="F">Femmina</option>
+                        <option value="A">Altro</option>
+                    </select>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="email" class="form-label">Indirizzo Email</label>
+                    <input id="email" type="email" class="form-control" name="email" placeholder="Inserisci la tua email" required>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input id="password" type="password" class="form-control" name="password" placeholder="Crea una password" required>
+                </div>
+
+                <div class="d-grid mb-3">
+                    <input type="submit" class="btn-sign" value="Sign up">
+                </div>
+            </form>
+        </section>
+
+        <section class="container sign-message">
+            <section class="sign-message-info">
+                <p class="sign-message-p">Hai già un account? <a href="/signin" class="sign">Accedi</a></p>
+            </section>
+        </section>
+    {% endblock %}

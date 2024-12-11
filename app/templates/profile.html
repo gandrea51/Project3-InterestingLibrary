@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+    {% block styles %}
+        <link rel="stylesheet" href="/static/css/profile.css">
+    {% endblock %}
+
+    {% block title %}My profile{% endblock %}
+
+    {% block main %}
+
+        <section class="container user-header">
+            <section class="user-intro">
+                <h2 class="user-h2">Ciao, {{ user.name }}</h2>
+                <h4 class="user-h4">Benvenuto nel tuo profilo!</h4>
+            </section>
+        </section>
+        
+        <section class="container user-data">
+            <section class="user-data-content">
+
+                <div class="info-box">
+                    <h4>Email</h4>
+                    <p>{{ user.email }}</p>
+                    <a href="/email" class="button-edit">Modifica Email</a>
+                </div>
+        
+                <div class="info-box">
+                    <h4>Storico Prestiti</h4>
+                    <p>Hai preso in prestito {{ user.lcount }} libri.</p>
+                </div>
+        
+                <div class="info-box">
+                    <h4>Password</h4>
+                    <p>**********</p>
+                    <a href="/password" class="button-edit">Modifica Password</a>
+                </div>
+            </section>
+        </section>
+    
+        <section class="container user-loans">
+            <section class="user-loans-intro">
+                <h3 class="user-loans-h3">Tutti i tuoi prestiti</h3>
+                <h5 class="user-loans-h5">Qui puoi vedere tutti i libri che hai preso in prestito.</h5>
+            </section>
+        
+            {% if mloan %}
+                <section class="user-nether-loans">
+                    <p>{{ mloan|safe }}</p>
+                    <a href="/explore" class="button-torna">Esplora la nostra biblioteca</a>
+                </section>
+            {% endif %}
+        
+            {% if loans %}
+                <section class="list-group" style="margin-top: 20px;">
+                    {% for loan in loans %}
+                        <section class="loan-item">
+                            <h5 class="loan-item-title">Libro: {{ loan.book.title }}</h5>
+                            <p class="loan-item-date">
+                                {% if loan.ended == "No" %}
+                                    Scadenza: <span class="loan-date">{{ loan.date_end.strftime("%d %B %Y") }}</span>
+                                {% else %}
+                                    Terminato il <span class="loan-date">{{ loan.date_end.strftime("%d %B %Y") }}</span>
+                                {% endif %}
+                            </p>
+                            <p class="loan-item-ex">
+                                {% if loan.extended == "Si" %}
+                                    <span class="loan-extension">Hai già esteso la durata di questo prestito.<br>Ricorda la data di consegna!</span>
+                                {% elif loan.extended == "No" and loan.ended == "No" %}
+                                    <span class="loan-prorogation">Se vuoi puoi richiedere 15 giorni extra per leggere meglio questo libro.<br>
+                                        <a class="loan-prorogation-anchor" href="{{ url_for('main.extension', id=loan.id) }}">Proroga Ora</a></span>
+                                {% elif loan.ended == "Si" %}
+                                    <span></span>
+                                {% endif %}
+                            </p>
+                        </section>
+                    {% endfor %}
+                </section>
+            {% endif %}
+        </section>
+        
+
+    {% endblock %}

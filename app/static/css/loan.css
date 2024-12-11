@@ -1,0 +1,99 @@
+/* Generale per il container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Sezione con sfondo e titolo principale */
+.loan-first-introduction {
+    background: url('/static/images/loan.jpg') no-repeat center center/cover;
+    color: #fff;
+    text-align: center;
+    padding: 50px 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.loan-intro-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.loan-intro-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    opacity: 0.9;
+}
+
+/* Paragrafo introduttivo */
+.loan-second-intro .loan-second-paragraph {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 30px;
+    text-align: justify;
+    border-left: 5px solid #a50000;
+    padding-left: 15px;
+}
+
+/* Link area principale */
+.loan-first-area,
+.loan-second-area {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 30px 0;
+}
+
+/* Singoli link */
+.loan-link {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(145deg, #ff9999, #ff4d4d);
+    padding: 20px;
+    width: 280px;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+}
+
+.loan-link:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
+}
+
+.loan-icon {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.loan-link p {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+/* Sezione area secondaria */
+.loan-second-area .loan-link {
+    background: linear-gradient(145deg, #ff6666, #ff3333);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .loan-first-area,
+    .loan-second-area {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .loan-link {
+        width: 100%;
+    }
+}

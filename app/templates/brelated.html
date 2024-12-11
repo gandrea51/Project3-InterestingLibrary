@@ -1,0 +1,96 @@
+{% extends "layout.html" %}
+    {% block styles %}
+        <link rel="stylesheet" href="/static/css/book.css">
+        <link rel="stylesheet" href="/static/css/bsearch.css">
+        <link rel="stylesheet" href="/static/css/brelated.css">        
+    {% endblock %}
+
+    {% block title %}Book{% endblock %}
+
+    {% block main %}
+
+        <section class="container book-first-area">
+            <section class="book-first-header">
+                <h2 class="book-header">Esplora la Nostra Biblioteca</h2>
+                <h4 class="book-subtitle">Scopri nuovi libri e lasciati ispirare dalle nostre collezioni</h4>
+            </section>
+        </section>
+
+        <section class="container related-first-area">
+            <section class="related-area">
+                <p class="related-first-description">
+                    Stai scoprendo i libri correlati a <strong>{{ book.title }} di {{book.author}}</strong>.
+                </p>
+            </section>
+            
+            <section class="related-second-area">
+                <p class="related-second-description">
+                    Immergiti in un mondo di avventure e scoperte con questi libri selezionati per te. Ogni titolo offre una nuova esperienza 
+                    di lettura, ricca di emozioni e ispirazione. Non perdere l'occasione di esplorare!
+                </p>
+            </section>
+        </section>
+
+
+        <section class="container books-grid">
+            {% for book in books %}
+            <div class="book-item" onclick="openModal(this)" data-book-id="{{ book.id }}">
+                <h3 class="book-title">{{ book.title }}</h3>
+                <h5 class="book-author">{{ book.author }}</h5>
+                <p class="book-details">
+                    Casa editrice: {{ book.publisher }}<br>
+                    Pubblicato nel: {{ book.year }}
+                </p>
+            </div>
+
+            <div id="modal-{{ book.id }}" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn" onclick="closeModal('modal-{{ book.id }}')">&times;</span>
+                    <div class="modal-book-details">
+                        <h2>{{ book.title }}</h2>
+                        <p class="book-modal-author"><strong>Autore:</strong> {{ book.author }}</p>
+                        <p class="book-modal-necklace"><strong>Collana:</strong> {{ book.necklace }}</p>
+
+                        <p class="book-modal-classification"><strong>Classificazione:</strong> {{ book.classification }}</p>                        
+                        <p class="book-modal-genre"><strong>Genere:</strong> {{ book.genre }}</p>
+
+                        <p class="book-modal-genre"><strong>Informazioni aggintive: </strong> {{ book.note }}</p>
+                        
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </section>
+
+        <script>
+            function openModal(element) {
+                const modalId = element.getAttribute('data-book-id');
+                const modal = document.getElementById(`modal-${modalId}`);
+                modal.style.display = 'block';
+
+                // Incrementa il conteggio delle visualizzazioni
+                fetch(`/increment_view/${modalId}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': '{{ csrf_token }}' // Se necessario
+                    }
+                }).catch(error => console.error('Errore nell\'incremento delle visualizzazioni:', error));
+            }
+
+
+        
+            function closeModal(modalId) {
+                document.getElementById(modalId).style.display = 'none';
+            }
+            // Chiudi il modal se clicchi all'esterno
+            window.onclick = function(event) {
+                const modals = document.getElementsByClassName('modal');
+                for (let i = 0; i < modals.length; i++) {
+                    if (event.target == modals[i]) {
+                        modals[i].style.display = 'none';
+                    }
+                }
+            }
+        </script>
+    {% endblock %}

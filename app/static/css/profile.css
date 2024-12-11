@@ -1,0 +1,257 @@
+/* User Header Section */
+.user-header {
+    background-color: #F8BBD0; /* Rosa chiaro */
+    padding: 40px 0;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.user-intro {
+    max-width: 800px;
+    margin: 0 auto;
+    color: #D32F2F; /* Rosso scuro */
+}
+
+.user-h2 {
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.user-h4 {
+    font-size: 18px;
+    color: #D32F2F;
+    font-style: italic;
+}
+
+/* User Data Section */
+.user-data {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.user-data-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.user-data-content .info-box {
+    background-color: #F8BBD0;
+    padding: 20px;
+    width: 48%;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.info-box h4 {
+    color: #D32F2F;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.info-box p {
+    font-size: 16px;
+    color: #333;
+}
+
+.info-box .button-edit {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #D32F2F;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.info-box .button-edit:hover {
+    background-color: #C2185B;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .user-data-content {
+        flex-direction: column;
+    }
+
+    .user-data-content .info-box {
+        width: 100%;
+    }
+}
+
+/**/
+
+/* User Loans Section */
+.user-loans {
+    background-color: #FBE9E7; /* Rosa chiaro per il background */
+    padding: 40px 20px;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+}
+
+.user-loans-intro {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.user-loans-h3 {
+    font-size: 32px;
+    color: #C2185B; /* Rosso scuro */
+    font-weight: bold;
+}
+
+.user-loans-h5 {
+    font-size: 18px;
+    color: #D32F2F;
+    font-style: italic;
+}
+
+/* Loans Display Section */
+.user-nether-loans {
+    background-color: #F8BBD0; /* Rosa chiaro */
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.user-nether-loans p {
+    font-size: 16px;
+    color: #333;
+}
+
+.button-torna {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #D32F2F;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.button-torna:hover {
+    background-color: #C2185B;
+}
+
+/* Loans List */
+.list-group {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.list-group {
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .user-loans-intro {
+        padding: 0 20px;
+    }
+
+    .list-group {
+        padding-left: 10px;
+    }
+}
+
+/* Loan Item Section */
+.loan-item {
+    background-color: #FFF3E0; /* Tonalità calda, beige aranciato */
+    border-left: 5px solid #C2185B; /* Rosso scuro per un bordo distintivo */
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.loan-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Title of Loaned Book */
+.loan-item-title {
+    font-size: 22px;
+    color: #C2185B; /* Rosso scuro */
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Loan Date */
+.loan-item-date {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.loan-date {
+    font-weight: bold;
+    color: #D32F2F; /* Rosso acceso */
+}
+
+/* Loan Extension or Prorogation */
+.loan-item-ex {
+    font-size: 14px;
+    color: #444;
+}
+
+.loan-extension {
+    background-color: #FFEBEE; /* Rosa pallido */
+    color: #D32F2F;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.loan-prorogation {
+    background-color: #F8BBD0; /* Rosa chiaro */
+    color: #333;
+    padding: 10px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.loan-prorogation a {
+    color: #C2185B; /* Rosso scuro */
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.loan-prorogation a:hover {
+    color: #D32F2F; /* Rosso acceso */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .loan-item {
+        padding: 15px;
+    }
+
+    .loan-item-title {
+        font-size: 18px;
+    }
+
+    .loan-item-date {
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+    {% block styles %}
+        <link rel="stylesheet" href="/static/css/contact.css">
+    {% endblock %}
+
+    {% block title %}Contact{% endblock %}
+
+    {% block main %}
+        <section class="container contact-introduction">
+            <div class="contact-title">
+                <h1>Contattaci</h1>
+                <p>Siamo qui per rispondere alle tue domande e offrirti supporto. Scrivici per qualsiasi informazione.</p>
+            </div>
+        </section>
+        
+        <section class="container contact-info">
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Indirizzo</h3>
+                <p>Via del Sapere, 123, Ferrara, Italia</p>
+            </div>
+        
+            <div class="contact-item">
+                <i class="fas fa-phone-alt"></i>
+                <h3>Telefono</h3>
+                <p>+39 0532 123456</p>
+            </div>
+        
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <h3>Email</h3>
+                <p>info@archeferrara.com</p>
+            </div>
+        </section>
+        
+        <section class="container contact-form">
+            <h2>Scrivici</h2>
+            <form method="post" action="/inscribe">
+                <div class="form-group mb-3">
+                    <label for="name" class="form-label">Nome</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Il tuo nome" required>
+                </div>
+        
+                <div class="form-group mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="La tua email" required>
+                </div>
+        
+                <div class="form-group mb-3">
+                    <label for="message" class="form-label">Messaggio</label>
+                    <textarea class="form-control" id="message" name="message" rows="5" placeholder="Il tuo messaggio" required></textarea>
+                </div>
+        
+                <div class="d-grid mb-3">
+                    <button type="submit" class="btn-contact">Invia</button>
+                </div>
+            </form>
+        </section>
+        
+    {% endblock %}

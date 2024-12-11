@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+    {% block styles %}
+        <link rel="stylesheet" href="/static/css/sign.css">
+    {% endblock %}
+
+    {% block title %}Email{% endblock %}
+
+    {% block main %}
+        <section class="container sign-introduction">
+            <section class="sign-title">
+                <h2 class="sign-first-title">Modifica la Email del Tuo Account</h2>
+                <p class="sign-second-title">Benvenuto! Inserisci le credenziali per completare l'operazione.</p>
+            </section>
+        </section>
+
+        <section class="container sign-form">
+            <form method="post" action="/email">
+
+                <div class="form-group mb-3">
+                    <label for="old" class="form-label">Email attuale</label>
+                    <input id="old" type="email" class="form-control" name="old" placeholder="Inserisci la tua email attuale" required>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="new" class="form-label">Email nuova</label>
+                    <input id="new" type="email" class="form-control" name="new" placeholder="Inserisci la nuova email" required>
+                </div>
+
+                <div class="d-grid mb-3">
+                    <input type="submit" class="btn-sign" value="Conferma">
+                </div>
+            </form>
+        </section>
+
+        <section class="container sign-message">
+            <section class="sign-message-info">
+                <p class="sign-message-p">Vuoi modificare la password? <a href="/password" class="sign">Cambiala qui</a></p>
+            </section>
+        </section>
+    {% endblock %}

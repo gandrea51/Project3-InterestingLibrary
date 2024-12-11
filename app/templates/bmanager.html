@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+    {% block styles %}
+        <link rel="stylesheet" href="/static/css/bmanager.css">
+        <link rel="stylesheet" href="/static/css/book.css">
+    {% endblock %}
+
+    {% block title %}Book{% endblock %}
+
+    {% block main %}
+        <section class="container book-first-area">
+            <section class="book-first-header">
+                <h2 class="book-header">Esplora la Nostra Biblioteca</h2>
+                <h4 class="book-subtitle">Scopri nuovi libri e lasciati ispirare dalle nostre collezioni</h4>
+            </section>
+        </section>
+
+        <section class="container book-second-block">
+            <section class="book-second-header">
+                <h2 class="book-second-title">Gestione della Biblioteca</h2>
+                <p class="book-second-subtitle">
+                    Aggiungi nuovi titoli alla tua collezione e tieni traccia delle informazioni sui libri disponibili. 
+                    <br>
+                    <a href="/book/create" class="button-create">Inserisci un Nuovo Libro</a>
+                </p>
+            </section>
+        </section>
+        
+
+        <section class="container book-third-block">
+            <section class="book-third-header">
+                <h2 class="book-third-title">Catalogo libri</h2>
+                <h4 class="book-third-subtitle">Esplora, cerca e gestisci tutti i libri disponibili nella biblioteca.</h4>
+                <input type="text" id="searchInput" class="form-control" placeholder="Cerca un libro...">
+            </section>
+
+            <section class="book-list">
+                <h4 class="book-list-title">Tutti i Libri</h4>
+                <ul id="bookList" class="list-group">
+                    {% for book in books %}
+                    <li class="list-group-item book-item">
+                        <strong>{{ book.title }}</strong> di {{ book.author }}
+                        <div class="book-actions">
+                            <a href="{{ url_for('main.bput', id=book.id) }}" class="button-edit">Modifica</a>
+                            <form action="{{ url_for('main.bdelete', id=book.id) }}" method="post" style="display:inline;">
+                                <button type="submit" class="button-delete" onclick="return confirm('Sei sicuro di voler eliminare questo libro?');">Elimina</button>
+                            </form>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </section>
+
+        </section>
+
+        <script>
+            // Funzione di ricerca
+            document.getElementById("searchInput").addEventListener("input", function() {
+                let filter = this.value.toLowerCase();
+                let items = document.querySelectorAll(".book-item");
+
+                items.forEach(item => {
+                    let title = item.querySelector("strong").innerText.toLowerCase();
+                    let author = item.innerText.toLowerCase();
+
+                    if (title.includes(filter) || author.includes(filter)) {
+                        item.style.display = "";
+                    } else {
+                        item.style.display = "none";
+                    }
+                });
+            });
+        </script>
+    {% endblock %}

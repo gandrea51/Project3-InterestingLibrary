@@ -1,0 +1,86 @@
+/* Generale per i contenitori */
+.loan-stat-area,
+.loan-stat-area-second {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #ffe6e6;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+/* Titoli */
+.stat-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #a50000;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* Valori */
+.stat-value {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #ff3333;
+    text-align: center;
+    background: linear-gradient(145deg, #fff5f5, #ffe6e6);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.stat-value:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Sezioni */
+.loan-stat-first,
+.loan-stat-second {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.stat-first-one,
+.stat-first-two,
+.stat-second-one,
+.stat-second-two {
+    flex: 1;
+    margin: 0 10px;
+    text-align: center;
+    border: 2px solid #ff9999;
+    border-radius: 8px;
+    background: #fff;
+    padding: 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+.stat-first-one:hover,
+.stat-first-two:hover,
+.stat-second-one:hover,
+.stat-second-two:hover {
+    border-color: #ff4d4d;
+    background: linear-gradient(145deg, #ffcccc, #ffe6e6);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .loan-stat-first,
+    .loan-stat-second {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .stat-first-one,
+    .stat-first-two,
+    .stat-second-one,
+    .stat-second-two {
+        margin: 10px 0;
+    }
+}

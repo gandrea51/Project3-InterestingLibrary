@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+    {% block title %}Errore {{error_code}}{% endblock %}
+    {% block styles %}
+        <link rel="stylesheet" href="/static/css/error.css">
+    {% endblock %}
+
+    {% block main %}
+        <section class="container error-introduction">
+            <section class="error-title">
+                <h2 class="error-main-title">{{ error_code }}</h2>
+                <h4 class="error-main-subtitle">Ops! Qualcosa è andato storto.</h4>
+            </section>
+        </section>
+
+        <section class="container error-main">
+            <section class="main-area-error">
+                <p class="error-description">{{ error_message }}</p>
+                <a href="/" class="error-button">Torna alla Home</a>
+            </section>
+        </section>
+    {% endblock %}

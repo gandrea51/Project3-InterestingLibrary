@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+    {% block styles %}
+        <link rel="stylesheet" href="/static/css/loan.css">
+        <link rel="stylesheet" href="/static/css/lstat.css">
+    {% endblock %}
+
+    {% block title %}Loan{% endblock %}
+
+    {% block main %}
+        <section class="container loan-first-introduction">
+            <section class="loan-intro">
+                <h2 class="loan-intro-title">Loan statistics</h2>
+                <h4 class="loan-intro-subtitle">Analyze loan statistics and performance metrics</h4>
+            </section>
+        </section>
+
+        <section class="container loan-stat-area">
+            <section class="loan-area-stat">
+                <section class="loan-stat-first">
+                    <section class="stat-first-one">
+                        <h3 class="stat-title">Totale Prestiti</h3>
+                        <p class="stat-value">{{ total }}</p>
+                    </section>
+                    <section class="stat-first-two">
+                        <h3 class="stat-title">Durata Media dei Prestiti</h3>
+                        <p class="stat-value">{{ avg | round(1) }} giorni</p>
+                    </section>
+                </section>
+            </section>
+        </section>
+
+        <section class="container loan-stat-area-second">
+            <section class="loan-area-stat-second">
+                <section class="loan-stat-second">
+                    <section class="stat-second-one">
+                        <h3 class="stat-title">Prestiti Scaduti</h3>
+                        <p class="stat-value">{{ overdue }}</p>
+                    </section>
+                    <section class="stat-second-two">
+                        <h3 class="stat-title">Prestiti Attivi</h3>
+                        <p class="stat-value">{{ actual }}</p>
+                    </section>
+                </section>
+            </section>
+        </section>
+    {% endblock %}

@@ -1,0 +1,226 @@
+.container.results-section {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(90deg, #ff4d4d, #e60000);
+    color: white;
+    font-family: 'Arial', sans-serif;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.search-description {
+    font-size: 1.2em;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    color: #fff5f5;
+}
+
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.book-item {
+    background-color: #ff6666;
+    color: white;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.book-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.book-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.book-author {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #ffe6e6;
+}
+
+.book-details {
+    font-size: 0.9em;
+    color: #ffe6e6;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    overflow: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: #fff;
+    margin: 5% auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #ff6666;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close-btn:hover {
+    color: #e60000;
+}
+
+.modal-book-details h2 {
+    font-size: 2em;
+    color: #e60000;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.modal-book-details p {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.modal-book-details p strong {
+    color: #ff4d4d;
+}
+
+.book-modal-message {
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    transition: transform 0.3s, opacity 0.3s ease-in-out;
+    position: relative;
+}
+
+.book-modal-message.success {
+    background-color: #4CAF50; /* Verde per messaggi positivi */
+    border-left: 5px solid #388E3C;
+}
+
+.book-modal-message.warning {
+    background-color: #FFC107; /* Giallo per messaggi di avviso */
+    border-left: 5px solid #FFA000;
+}
+
+.book-modal-message.error {
+    background-color: #f44336; /* Rosso per messaggi di errore */
+    border-left: 5px solid #D32F2F;
+}
+
+.book-modal-message p {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.book-modal-message i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5em;
+}
+
+.book-modal-message.success i {
+    color: #388E3C;
+}
+
+.book-modal-message.warning i {
+    color: #FFA000;
+}
+
+.book-modal-message.error i {
+    color: #D32F2F;
+}
+
+.book-modal-message.visible {
+    transform: scale(1.05);
+    opacity: 1;
+}
+
+/* Aggiungiamo un'animazione di fade-in e un'animazione al messaggio */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.book-modal-message {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.book-loan-button {
+    display: inline-block;
+    background-color: #D32F2F;  /* Colore rosso accattivante */
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.1em;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 50px;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.book-loan-button:hover {
+    background-color: #C2185B;  /* Un rosso più scuro per l'hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+    transform: translateY(-5px);  /* Aumento dell'effetto al passaggio del mouse */
+    color: white;
+}
+
+
+.book-loan-button span {
+    position: relative;
+    z-index: 1;  /* Porta il testo sopra l'animazione */
+}
+
+.book-loan-button i {
+    margin-right: 10px;
+    font-size: 1.2em;
+}
+
+.book-loan-button:hover i {
+    transform: translateX(5px);
+    transition: all 0.3s ease-in-out;
+}

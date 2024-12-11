@@ -1,0 +1,59 @@
+.related-first-area {
+    background: linear-gradient(to bottom right, #FFA07A, #FF4500); /* Gradiente accattivante in tonalità di rosso */
+    color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    text-align: center;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.related-first-area .related-area {
+    margin-bottom: 1.5rem;
+}
+
+.related-first-description {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+    margin: 0;
+}
+
+.related-second-area {
+    background: #fff;
+    color: #B22222; /* Testo in una tonalità rossa chiara */
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 2px solid #FFA07A; /* Bordo tenue per definire la sezione */
+    text-align: justify;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.related-second-description {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin: 0;
+}
+
+.related-second-description strong {
+    color: #FF4500; /* Enfasi sul titolo */
+    font-weight: bold;
+}
+
+.related-first-area:hover,
+.related-second-area:hover {
+    transform: translateY(-5px);
+    transition: all 0.3s ease-in-out;
+}
+
+.related-first-area:hover {
+    background: linear-gradient(to bottom right, #FF6347, #FF0000); /* Sfumature più intense al passaggio del mouse */
+}
+
+.related-second-area:hover {
+    border-color: #FF4500;
+}

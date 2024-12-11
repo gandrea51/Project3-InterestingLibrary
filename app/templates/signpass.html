@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+    {% block styles %}
+        <link rel="stylesheet" href="/static/css/sign.css">
+    {% endblock %}
+
+    {% block title %}Password{% endblock %}
+
+    {% block main %}
+        <section class="container sign-introduction">
+            <section class="sign-title">
+                <h2 class="sign-first-title">Modifica la Password del Tuo Account</h2>
+                <p class="sign-second-title">Benvenuto! Inserisci le credenziali per completare l'operazione.</p>
+            </section>
+        </section>
+
+        <section class="container sign-form">
+            <form method="post" action="/password">
+
+                <div class="form-group mb-3">
+                    <label for="old" class="form-label">Password attuale</label>
+                    <input id="old" type="password" class="form-control" name="old" placeholder="Inserisci la tua password attuale" required>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="new" class="form-label">Password nuova</label>
+                    <input id="new" type="password" class="form-control" name="new" placeholder="Crea una nuova password" required>
+                </div>
+
+                <div class="d-grid mb-3">
+                    <input type="submit" class="btn-sign" value="Conferma">
+                </div>
+            </form>
+        </section>
+
+        <section class="container sign-message">
+            <section class="sign-message-info">
+                <p class="sign-message-p">Vuoi modificare l'email? <a href="/email" class="sign">Cambiala qui</a></p>
+            </section>
+        </section>
+    {% endblock %}

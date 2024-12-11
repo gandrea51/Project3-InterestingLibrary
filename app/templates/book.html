@@ -1,0 +1,324 @@
+{% extends "layout.html" %}
+    {% block styles %}
+        <link rel="stylesheet" href="/static/css/book.css">
+        <link rel="stylesheet" href="/static/css/bsearch.css">
+    {% endblock %}
+
+    {% block title %}Book{% endblock %}
+
+    {% block main %}
+
+        <section class="container book-first-area">
+            <section class="book-first-header">
+                <h2 class="book-header">Esplora la Nostra Biblioteca</h2>
+                <h4 class="book-subtitle">Scopri nuovi libri e lasciati ispirare dalle nostre collezioni</h4>
+            </section>
+        </section>
+
+        <section class="container book-second-area">
+            <img src="/static/images/booksecond.jpg" alt="Manager Area Image">
+            <p class="book-descr">
+                Questa è l'area dedicata alle operazioni manageriali sui libri. Qui puoi gestire, modificare e monitorare tutti i titoli disponibili nel sistema. 
+                Per favore, utilizza il pulsante sottostante per accedere a tutte le funzioni disponibili.
+                <br>
+                <a href="/book/manager" class="btn-manager">Apri Area Manager</a>
+            </p>
+        </section>
+        
+        <section class="container book-search-area">
+            <section class="book-search-title">
+                <h2 class="book-search-h2">Cerca un Libro</h2>
+                <h4 class="book-search-h4">Seleziona un criterio per iniziare la tua ricerca</h4>
+            </section>
+            
+            <section class="book-search-tabs">
+                <button class="tab-button active" onclick="openSearchForm('title')">Cerca per Titolo</button>
+                <button class="tab-button" onclick="openSearchForm('author')">Cerca per Autore</button>
+                <button class="tab-button" onclick="openSearchForm('genre')">Cerca per Genere</button>
+            </section>
+        
+            <div id="search-title" class="book-search-form active">
+                <h3 class="book-search-subtitle">Cerca per Titolo</h3>
+                <form action="/book/search/title" method="POST">
+                    <input type="text" name="title" placeholder="Inserisci il titolo del libro" required>
+                    <button type="submit"><i class="fas fa-search"></i> Cerca</button>
+                </form>
+            </div>
+        
+            <div id="search-author" class="book-search-form">
+                <h3 class="book-search-subtitle">Cerca per Autore</h3>
+                <form action="/book/search/author" method="POST">
+                    <input type="text" name="author" placeholder="Inserisci il nome dell'autore" required>
+                    <button type="submit"><i class="fas fa-search"></i> Cerca</button>
+                </form>
+            </div>
+        
+            <div id="search-genre" class="book-search-form">
+                <h3 class="book-search-subtitle">Cerca per Genere</h3>
+                <form action="/book/search/genre" method="POST">
+                    <input type="text" name="genre" placeholder="Inserisci il genere del libro" required>
+                    <button type="submit"><i class="fas fa-search"></i> Cerca</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="container book-feature-area">
+            <section class="book-feature-title">
+                <h2 class="book-feature-h2">Libri in Evidenza</h2>
+                <h4 class="book-feature-h4">Scopri i nostri suggerimenti del mese</h4>
+            </section>
+        
+            <section class="book-feature-select">
+                <section class="book-type-select">
+                    <button class="tab-button active" onclick="openBookType('featured')">In Evidenza</button>
+                    <button class="tab-button" onclick="openBookType('classic')">Classico del Mese</button>
+                    <button class="tab-button" onclick="openBookType('newrelease')">Nuova Uscita</button>
+                </section>
+            </section>
+        
+            <section id="featured-book" class="book-card active">
+                <div class="book-image">
+                    <img src="/static/images/realises.jpg" alt="Libro In Evidenza">
+                </div>
+                <div class="book-info">
+                    <h3 class="featured-title">{{ realise.title }} di {{ realise.author }}</h3>
+                    <p class="featured-paragraph">
+                        Scelto per la sua qualità narrativa e l'impatto culturale, questo è il libro in evidenza per il mese.
+                    </p>
+                    <a href="#" class="button-bfa" onclick="openModal(this)" data-book-id="{{ realise.id }}">Scopri di Più</a>
+                </div>
+            </section>
+        
+            <section id="classic-book" class="book-card">
+                <div class="book-image">
+                    <img src="/static/images/bookclassic.jpg" alt="Classico del Mese">
+                </div>
+                <div class="book-info">
+                    <h3 class="classic-title">{{ classic.title }} di {{ classic.author }}</h3>
+                    <p class="classic-paragraph">
+                        Questo classico ha superato la prova del tempo, offrendo una lettura senza tempo.
+                    </p>
+                    <a href="#" class="button-bfa" onclick="openModal(this)" data-book-id="{{ classic.id }}">Scopri di Più</a>
+                </div>
+            </section>
+        
+            <section id="newrelease-book" class="book-card">
+                <div class="book-image">
+                    <img src="/static/images/booknew.jpg" alt="Nuova Uscita del Mese">
+                </div>
+                <div class="book-info">
+                    <h3 class="new-title">{{ new.title }} di {{ new.author }}</h3>
+                    <p class="new-paragraph">
+                        La novità del mese, fresca di stampa e pronta per essere scoperta.
+                    </p>
+                    <a href="#" class="button-bfa" onclick="openModal(this)" data-book-id="{{ new.id }}">Scopri di Più</a>
+                </div>
+            </section>
+
+            <div id="modal-{{ realise.id }}" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn" onclick="closeModal('modal-{{ realise.id }}')">&times;</span>
+                    <div class="modal-book-details">
+                        <h2>{{ realise.title }}</h2>
+                        <p class="book-modal-author"><strong>Autore:</strong> {{ realise.author }}</p>
+                        <p class="book-modal-necklace"><strong>Collana:</strong> {{ realise.necklace }}</p>
+
+                        <p class="book-modal-classification"><strong>Classificazione:</strong> {{ realise.classification }}</p>                        
+                        <p class="book-modal-genre"><strong>Genere:</strong> {{ realise.genre }}</p>
+
+                        <p class="book-modal-genre"><strong>Informazioni aggintive: </strong> {{ realise.note }}</p>
+
+                        <p class="book-modal-genre"><strong>Libri Correlati: </strong> 
+                            <a href="{{ url_for('main.brelated', id=realise.id) }}" class="btn-related">Scopri i libri correlati</a>
+                        </p>
+
+                        <p class="book-modal-message">{{mrealise}}</p>
+
+                        {% if realise.copy >= 1 %}
+                            <a class="book-loan-button" href="/loan/create">
+                                <i class="fas fa-book"></i> Prendilo in prestito
+                            </a>                        
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div id="modal-{{ classic.id }}" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn" onclick="closeModal('modal-{{ classic.id }}')">&times;</span>
+                    <div class="modal-book-details">
+                        <h2>{{ classic.title }}</h2>
+                        <p class="book-modal-author"><strong>Autore:</strong> {{ classic.author }}</p>
+                        <p class="book-modal-necklace"><strong>Collana:</strong> {{ classic.necklace }}</p>
+
+                        <p class="book-modal-classification"><strong>Classificazione:</strong> {{ classic.classification }}</p>                        
+                        <p class="book-modal-genre"><strong>Genere:</strong> {{ classic.genre }}</p>
+
+                        <p class="book-modal-genre"><strong>Informazioni aggintive: </strong> {{ classic.note }}</p>
+                        
+                        <p class="book-modal-genre"><strong>Libri Correlati: </strong> 
+                            <a href="{{ url_for('main.brelated', id=classic.id) }}" class="btn-related">Scopri i libri correlati</a>
+                        </p>
+                        
+                        <p class="book-modal-message">{{mclassic}}</p>
+
+                        {% if classic.copy >= 1 %}
+                            <a class="book-loan-button" href="/loan/create">
+                                <i class="fas fa-book"></i> Prendilo in prestito
+                            </a>                        
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div id="modal-{{ new.id }}" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn" onclick="closeModal('modal-{{ new.id }}')">&times;</span>
+                    <div class="modal-book-details">
+                        <h2>{{ new.title }}</h2>
+                        <p class="book-modal-author"><strong>Autore:</strong> {{ new.author }}</p>
+                        <p class="book-modal-necklace"><strong>Collana:</strong> {{ new.necklace }}</p>
+
+                        <p class="book-modal-classification"><strong>Classificazione:</strong> {{ new.classification }}</p>                        
+                        <p class="book-modal-genre"><strong>Genere:</strong> {{ new.genre }}</p>
+
+                        <p class="book-modal-genre"><strong>Informazioni aggintive: </strong> {{ new.note }}</p>
+                        
+                        <p class="book-modal-genre"><strong>Libri Correlati: </strong> 
+                            <a href="{{ url_for('main.brelated', id=new.id) }}" class="btn-related">Scopri i libri correlati</a>
+                        </p>
+
+                        <p class="book-modal-message">{{mnew}}</p>
+
+                        {% if new.copy >= 1 %}
+                            <a class="book-loan-button" href="/loan/create">
+                                <i class="fas fa-book"></i> Prendilo in prestito
+                            </a>                        
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="container book-stats-area">
+            <section class="book-stats-header">
+                <h2 class="book-stats-h2">Statistiche della Biblioteca</h2>
+                <h4 class="book-stats-h4">Uno sguardo alle attività della biblioteca</h4>
+            </section>
+        
+            <div class="book-stats-wrapper">
+                <div class="stats-image">
+                    <img src="/static/images/bookstats.jpg" alt="Statistiche della Biblioteca">
+                </div>
+                <div class="stats-content">
+                    <section class="book-stats-summary">
+                        <div class="stat-box">
+                            <i class="fas fa-book fa-3x"></i>
+                            <h4>Libri Totali</h4>
+                            <p class="stat-value">{{ stats.tbooks }}</p>
+                        </div>
+                        <div class="stat-box">
+                            <i class="fas fa-eye fa-3x"></i>
+                            <h4>Visualizzazioni Totali</h4>
+                            <p class="stat-value">{{ stats.tviews }}</p>
+                        </div>
+                        <div class="stat-box">
+                            <i class="fas fa-download fa-3x"></i>
+                            <h4>Download Totali</h4>
+                            <p class="stat-value">{{ stats.tdowns }}</p>
+                        </div>
+                    </section>
+        
+                    <section class="book-stats-books">
+                        <h3 class="most-viewed-title">Libri più Visualizzati</h3>
+                        {% for book in stats.mbooks %}
+                        <div class="most-viewed-book">
+                            <h5 class="book-title">{{ book.title }}</h5>
+                            <p class="book-author"><em>{{ book.author }}</em></p>
+                            <p class="book-views">{{ book.bview }} visualizzazioni</p>
+                        </div>
+                        {% endfor %}
+                    </section>
+                </div>
+            </div>
+        </section>
+
+        <section class="container book-genre-area">
+            <section class="book-genre">
+                <h2 class="book-genre-h2">Esplora i Generi</h2>
+                <h4 class="book-genre-h4">Scegli il tuo genere preferito</h4>
+            </section>
+        
+            <section class="book-genre-sub-area">
+                {% for genre, count in genres %}
+                    <form action="/book/genre" method="POST" class="genre-card-form">
+                        <input type="hidden" name="genre" value="{{ genre }}">
+            
+                        <button type="submit" class="genre-card-btn">
+                            <i class="fas fa-book"></i>
+                            <h4>{{ genre }}</h4>
+                            <p>Libri Disponibili: <strong>{{ count }}</strong></p>
+                        </button>
+                    </form>
+                {% endfor %}
+            </section>
+        </section>
+        
+
+        <script>
+            function openSearchForm(formType) {
+                // Rimuove la classe "active" da tutti i pulsanti e form
+                const buttons = document.querySelectorAll('.tab-button');
+                const forms = document.querySelectorAll('.book-search-form');
+                
+                buttons.forEach(button => button.classList.remove('active'));
+                forms.forEach(form => form.classList.remove('active'));
+                
+                // Aggiunge la classe "active" al pulsante e al form selezionato
+                document.querySelector(`.tab-button[onclick="openSearchForm('${formType}')"]`).classList.add('active');
+                document.getElementById(`search-${formType}`).classList.add('active');
+            }
+
+            function openBookType(bookType) {
+                // Rimuove la classe "active" da tutti i pulsanti e card
+                const buttons = document.querySelectorAll('.tab-button');
+                const cards = document.querySelectorAll('.book-card');
+                
+                buttons.forEach(button => button.classList.remove('active'));
+                cards.forEach(card => card.classList.remove('active'));
+                
+                // Aggiunge la classe "active" al pulsante e alla card selezionata
+                document.querySelector(`.tab-button[onclick="openBookType('${bookType}')"]`).classList.add('active');
+                document.getElementById(`${bookType}-book`).classList.add('active');
+            }
+
+            function openModal(element) {
+                const modalId = element.getAttribute('data-book-id');
+                const modal = document.getElementById(`modal-${modalId}`);
+                modal.style.display = 'block';
+
+                // Incrementa il conteggio delle visualizzazioni
+                fetch(`/increment_view/${modalId}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': '{{ csrf_token }}' // Se necessario
+                    }
+                }).catch(error => console.error('Errore nell\'incremento delle visualizzazioni:', error));
+            }
+        
+            function closeModal(modalId) {
+                document.getElementById(modalId).style.display = 'none';
+            }
+            // Chiudi il modal se clicchi all'esterno
+            window.onclick = function(event) {
+                const modals = document.getElementsByClassName('modal');
+                for (let i = 0; i < modals.length; i++) {
+                    if (event.target == modals[i]) {
+                        modals[i].style.display = 'none';
+                    }
+                }
+            }
+        </script>
+
+    {% endblock %}

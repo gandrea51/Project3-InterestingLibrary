@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+    {% block styles %}
+        <link rel="stylesheet" href="/static/css/explore.css">
+    {% endblock %}
+
+    {% block title %}Explore{% endblock %}
+
+    {% block main %}
+        <section class="container explore-introduction">
+            <section class="explore-title">
+                <h2 class="explore-main-title">Esplora Arché Ferrara</h2>
+                <p class="explore-main-subtitle">Scopri libri, eventi, e risorse che ti ispirano. Immergiti nel sapere condiviso!</p>
+            </section>
+        </section>
+        
+        <section class="container explore-grid">
+            <!-- Card 1 -->
+            <div class="explore-card">
+                <img src="/static/images/books.jpg" alt="Libri" class="explore-image">
+                <div class="explore-content">
+                    <h3>Libri</h3>
+                    <p>Scopri la nostra selezione di libri: dai classici ai best-seller, esplora mondi nuovi e storie emozionanti.</p>
+                    <a href="/book" class="explore-button">Scopri di più</a>
+                </div>
+            </div>
+        
+            <!-- Card 2 -->
+            <div class="explore-card">
+                <img src="/static/images/events.jpg" alt="Eventi" class="explore-image">
+                <div class="explore-content">
+                    <h3>Eventi</h3>
+                    <p>Partecipa agli eventi culturali, workshop e presentazioni organizzati da Arché Ferrara.</p>
+                    <a href="/event" class="explore-button">Scopri di più</a>
+                </div>
+            </div>
+        
+            <!-- Card 3 -->
+            <div class="explore-card">
+                <img src="/static/images/resources.jpg" alt="Risorse" class="explore-image">
+                <div class="explore-content">
+                    <h3>Risorse</h3>
+                    <p>Accedi a materiali esclusivi, guide e articoli per approfondire il tuo sapere.</p>
+                    <a href="/resource" class="explore-button">Scopri di più</a>
+                </div>
+            </div>
+        </section>
+
+        {% if current_user.is_authenticated and current_user.role == "A" %}
+            <section class="container explore-grid">
+                <!-- Card 4 -->
+                <div class="explore-card">
+                    <img src="/static/images/loans.jpg" alt="Libri" class="explore-image">
+                    <div class="explore-content">
+                        <h3>Prestiti</h3>
+                        <p>Gestisci tutti i prestiti: visualizza le statistiche, terminali, o ripristina la disponibilità.</p>
+                        <a href="/loan" class="explore-button">Scopri di più</a>
+                    </div>
+                </div>
+            
+                <!-- Card 5 -->
+                <div class="explore-card">
+                    <img src="/static/images/users.jpg" alt="Eventi" class="explore-image">
+                    <div class="explore-content">
+                        <h3>Utenti</h3>
+                        <p>Gestisci tutti gli utenti registrati di Arché Ferrara.</p>
+                        <a href="/user" class="explore-button">Scopri di più</a>
+                    </div>
+                </div>
+            
+                <!-- Card 6 -->
+                <div class="explore-card">
+                    <img src="/static/images/messages.jpg" alt="Risorse" class="explore-image">
+                    <div class="explore-content">
+                        <h3>Messaggi</h3>
+                        <p>Leggi tutti i messaggi che sono stati scritti dai visitatori.</p>
+                        <a href="/message" class="explore-button">Scopri di più</a>
+                    </div>
+                </div>
+            </section>
+        {% endif %}
+        
+    {% endblock %}

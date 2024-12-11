@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+    {% block styles %}
+        <link rel="stylesheet" href="/static/css/moduli.css">
+        <link rel="stylesheet" href="/static/css/bmanager.css">
+    {% endblock %}
+
+    {% block title %}Event{% endblock %}
+
+    {% block main %}
+        <section class="container book-second-block">
+            <section class="book-second-header">
+                <h2 class="book-second-title">Gestione degli Eventi</h2>
+                <p class="book-second-subtitle">
+                    Programma nuovi eventi e tieni traccia delle informazioni sugli eventi già programmati.  
+                </p>
+            </section>
+        </section>
+        
+        <section class="container book-modulo">
+            <form action="/event/create" method="POST" class="general-form">
+
+                <div class="form-group mb-4">
+                    <label for="title">Titolo</label>
+                    <input required id="title" class="form-control" name="title" type="text" placeholder="Inserisci il titolo dell'evento">
+                    <small class="form-text">Come si chiama l'evento?</small>
+                </div>
+        
+                <div class="form-group mb-4">
+                    <label for="description">Descrizione</label>
+                    <textarea id="description" class="form-control" name="description" rows="4" placeholder="Descrizione dell'evento"></textarea>
+                    <small class="form-text">Di cosa tratterà l'evento?</small>
+                </div>     
+        
+                <div class="form-group mb-4">
+                    <label for="place">Luogo</label>
+                    <input required id="place" class="form-control" name="place" type="text" placeholder="Inserisci il luogo dell'evento">
+                    <small class="form-text">Dove si terrà l'evento?</small>
+                </div>
+        
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="date_start">Inizio</label>
+                            <input required id="date_start" class="form-control" name="date_start" type="date">
+                            <small class="form-text">Quando inizierà l'evento?</small>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="date_end">Fine</label>
+                            <input required id="date_end" class="form-control" name="date_end" type="date">
+                            <small class="form-text">Quando finirà l'evento?</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="submit" class="button-aggiungi">Programma</button>
+            </form>
+        </section>
+        
+            
+    {% endblock %}

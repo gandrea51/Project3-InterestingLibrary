@@ -1,0 +1,140 @@
+/* Container Generale */
+.container.book-modulo {
+    padding: 40px;
+    background: linear-gradient(145deg, #ffe0e0, #ff9b9b);
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    max-width: 900px;
+    margin: 50px auto;
+    transition: all 0.3s ease-in-out;
+}
+
+.container.book-modulo:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Titoli e Etichette */
+form.general-form label {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #b71c1c;
+}
+
+form.general-form .form-text {
+    font-size: 0.9rem;
+    color: #8e0000;
+}
+
+/* Input e Textarea */
+form.general-form .form-control {
+    border: 2px solid #ff5252;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+form.general-form .form-control:focus {
+    border-color: #b71c1c;
+    outline: none;
+    box-shadow: 0 0 5px rgba(183, 28, 28, 0.5);
+}
+
+/* Pulsante di Invio */
+button.button-aggiungi {
+    background: #b71c1c;
+    color: #fff;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button.button-aggiungi:hover {
+    background: #ff5252;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(183, 28, 28, 0.3);
+}
+
+/* Layout Responsive */
+.row.mb-4 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.col-md-3, .col-md-6 {
+    flex: 1;
+    min-width: 200px;
+}
+
+.suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #fff;  /* Sfondo bianco per un buon contrasto */
+    border: 1px solid #D32F2F;  /* Bordo rosso per richiamare il tema */
+    border-radius: 5px;
+    max-height: 300px;
+    overflow-y: auto;  /* Per gestire più suggerimenti, con scroll */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);  /* Ombra per evidenziarlo sopra altri contenuti */
+    z-index: 9999;  /* Assicurati che sia visibile sopra gli altri contenuti */
+    transition: all 0.3s ease-in-out;
+    padding: 10px;
+    display: none;  /* Nascondiamo i suggerimenti fino a quando non vengono richiesti */
+}
+
+
+.suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #D32F2F;
+    border-radius: 5px;
+    max-height: 200px;
+    overflow-y: auto;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+    display: none;
+    padding: 10px;
+    margin-top: 5px;
+    transition: all 0.3s ease;
+}
+
+.suggestions.active {
+    display: block;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.suggestion {
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #F8BBD0;
+    border-radius: 5px;
+    border: 1px solid #D32F2F;
+    color: #D32F2F;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.suggestion:hover {
+    background-color: #C2185B;
+    color: white;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

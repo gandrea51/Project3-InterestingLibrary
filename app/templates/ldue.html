@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+    {% block styles %}
+        <link rel="stylesheet" href="/static/css/loan.css">
+        <link rel="stylesheet" href="/static/css/bsearch.css">
+        <link rel="stylesheet" href="/static/css/lall.css">
+    {% endblock %}
+
+    {% block title %}Loan{% endblock %}
+
+    {% block main %}
+
+        <section class="container loan-first-introduction">
+            <section class="loan-intro">
+                <h2 class="loan-intro-title">Prestiti in scadenza a breve</h2>
+                <h4 class="loan-intro-subtitle">View loans approaching maturity deadlines</h4>
+            </section>
+        </section>
+
+        <section class="container books-grid">
+            {% for loan in loans %}
+            <div class="book-item" onclick="openModal('modal-{{ loan.id }}')">
+                <h3 class="book-title">{{ loan.book.title }}</h3>
+                <h5 class="book-author">Da: {{ loan.user.name }}</h5>
+                <p class="book-details">
+                    Inziato il: {{loan.date_start.strftime("%d %B %Y")}}<br>
+                    {% if loan.ended == "Si" %}
+                        Finito il: {{loan.date_end.strftime("%d %B %Y")}}
+                    {% else %}
+                        Finirà il: {{loan.date_end.strftime("%d %B %Y")}}
+                    {% endif %}
+                </p>
+            </div>
+
+            <div id="modal-{{ loan.id }}" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn" onclick="closeModal('modal-{{ loan.id }}')">&times;</span>
+                    <div class="modal-book-details">
+                        <h2>{{ loan.book.title }}</h2>
+                        <p class="book-modal-author"><strong>Utente:</strong> {{loan.user.name}}</p>
+                        <p class="book-modal-necklace"><strong>Email:</strong> {{loan.user.email}}</p>
+
+                        <p class="book-modal-classification"><strong>Terminato:</strong>
+                            {% if loan.ended == "Si" %}
+                                Si, il {{loan.date_end.strftime("%d %B %Y")}}
+                            {% else %}
+                                No, terminerà il {{loan.date_end.strftime("%d %B %Y")}}
+                            {% endif %}
+                        </p>
+                        <p class="book-modal-genre"><strong>Prorogato:</strong> {{loan.extended}}</p>
+
+                        <p class="book-modal-genre"><strong>Riconsegnato:</strong> {{loan.returned}}</p>
+                        <p class="book-modal-message"></p>
+                        
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <div class="book-item">
+                <h3 class="book-title">Nessun prestito in scadenza a breve.</h3>
+            </div>
+            {% endfor %}
+        </section>
+
+        <script>
+            function openModal(modalId) {
+                document.getElementById(modalId).style.display = 'block';
+            }
+        
+            function closeModal(modalId) {
+                document.getElementById(modalId).style.display = 'none';
+            }
+            // Chiudi il modal se clicchi all'esterno
+            window.onclick = function(event) {
+                const modals = document.getElementsByClassName('modal');
+                for (let i = 0; i < modals.length; i++) {
+                    if (event.target == modals[i]) {
+                        modals[i].style.display = 'none';
+                    }
+                }
+            }
+        </script>
+    {% endblock %}

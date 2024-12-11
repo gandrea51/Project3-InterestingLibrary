@@ -1,0 +1,96 @@
+{% extends "layout.html" %}
+    {% block styles %}
+        <link rel="stylesheet" href="/static/css/moduli.css">
+        <link rel="stylesheet" href="/static/css/bmanager.css">
+    {% endblock %}
+
+    {% block title %}Book{% endblock %}
+
+    {% block main %}
+        <section class="container book-second-block">
+            <section class="book-second-header">
+                <h2 class="book-second-title">Gestione della Biblioteca</h2>
+                <p class="book-second-subtitle">
+                    Modifica il titolo della collezione {{book.title}} di {{book.author}}
+                </p>
+            </section>
+        </section>
+        
+        <section class="container book-modulo">
+            <form action="{{ url_for('main.bput', id=book.id) }}" method="POST" class="general-form">
+                <div class="form-group mb-4">
+                    <label for="title">Titolo</label>
+                    <input required id="title" class="form-control" name="title" type="text" value="{{book.title}}">
+                    <small class="form-text">Come si chiama il libro?</small>
+                </div>
+        
+                <div class="form-group mb-4">
+                    <label for="year">Anno</label>
+                    <input required id="year" class="form-control" name="year" type="text" value="{{book.year}}">
+                    <small class="form-text">Quando è stato scritto?</small>
+                </div>        
+        
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="classification">Classificazione</label>
+                            <input required id="classification" class="form-control" name="classification" type="text" value="{{book.classification}}">
+                            <small class="form-text">Come è classificato il libro?</small>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="position">Posizione</label>
+                            <input required id="position" class="form-control" name="position" type="text" value="{{book.position}}">
+                            <small class="form-text">Dove si trova il libro?</small>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="row mb-4">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="author">Autore</label>
+                            <input required id="author" class="form-control" name="author" type="text" value="{{book.author}}">
+                            <small class="form-text">Chi ha scritto il libro?</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="genre">Genere</label>
+                            <input required id="genre" class="form-control" name="genre" type="text" value="{{book.genre}}">
+                            <small class="form-text">A quale genere appartiene?</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="necklace">Collana</label>
+                            <input id="necklace" class="form-control" name="necklace" type="text" value="{{book.necklace}}">
+                            <small class="form-text">A quale collana appartiene, se ne ha una?</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="publisher">Editore</label>
+                            <input required id="publisher" class="form-control" name="publisher" type="text" value="{{book.publisher}}">
+                            <small class="form-text">Chi ha pubblicato il libro?</small>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="form-group mb-4">
+                    <label for="note">Note Aggiuntive</label>
+                    <textarea id="note" class="form-control" name="note" rows="3">{{book.note}}</textarea>
+                    <small class="form-text">Vi sono note aggiuntive per il libro?</small>
+                </div>
+        
+                <div class="form-group mb-4">
+                    <label for="copy">Copie</label>
+                    <input required id="copy" class="form-control" name="copy" type="number" min="0" max="10" step="1" value="{{book.copy}}">
+                    <small class="form-text">Quante copie sono disponibili per il libro?</small>
+                </div>
+                
+                <button type="submit" class="button-aggiungi">Conferma</button>
+            </form>
+        </section>
+    {% endblock %}

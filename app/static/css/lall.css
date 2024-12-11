@@ -1,0 +1,70 @@
+/* Stile generale per i contenitori */
+.termination,
+.returned {
+    display: block;
+    margin: 20px 0;
+    padding: 20px;
+    background: #ffe6e6;
+    border: 2px solid #ff9999;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-family: 'Arial', sans-serif;
+    font-size: 1.1rem;
+    color: #a50000;
+    line-height: 1.6;
+}
+
+/* Bottoni */
+.termination-button,
+.backup-button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    background: linear-gradient(145deg, #ff4d4d, #a50000);
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+}
+
+.termination-button:hover,
+.backup-button:hover {
+    background: linear-gradient(145deg, #ff6666, #b30000);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Testo */
+.termination-button:active,
+.backup-button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.termination span,
+.returned span {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #800000;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .termination,
+    .returned {
+        font-size: 1rem;
+        padding: 15px;
+    }
+
+    .termination-button,
+    .backup-button {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+    }
+}

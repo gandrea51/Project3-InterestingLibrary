@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+    {% block styles %}
+        <link rel="stylesheet" href="/static/css/moduli.css">
+        <link rel="stylesheet" href="/static/css/bmanager.css">
+    {% endblock %}
+
+    {% block title %}Loan{% endblock %}
+
+    {% block main %}
+
+        <section class="container book-second-block">
+            <section class="book-second-header">
+                <h2 class="book-second-title">Crea un Nuovo Prestito</h2>
+                <p class="book-second-subtitle">
+                    Completa il modulo sottostante per registrare un nuovo prestito. Assicurati di inserire tutte le informazioni richieste
+                </p>
+            </section>
+        </section>
+
+        <section class="container book-modulo">
+            <form action="/loan/create" method="POST" class="general-form">
+
+                <div class="form-group mb-4">
+                    <label for="title">Titolo</label>
+                    <input required id="title" class="form-control" name="title" type="text" placeholder="Inizia a scrivere il titolo del libro">
+                    
+                    <!-- Sezione dei suggerimenti -->
+                    <div class="suggestions" id="suggestions"></div>
+                    
+                    <small class="form-text">Come si chiama il libro che vuoi prendere in prestito?</small>
+                </div>
+                
+        
+                <div class="form-group mb-4">
+                    <label for="date_start">Inizio</label>
+                    <input required id="date_start" class="form-control" name="date_start" type="date">
+                    <small class="form-text">Quando ritirerai il libro della nostra sede?</small>
+                </div>   
+
+                
+                <button type="submit" class="button-aggiungi">Conferma</button>
+            </form>
+
+        </section>
+        
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('#title').on('input', function() {
+                    let query = $(this).val();
+                    if (query.length >= 2) {
+                        $.get('/suggest', { query: query }, function(data) {
+                            $('#suggestions').empty();  // Pulisce i suggerimenti precedenti
+                            if (data.length > 0) {
+                                $('#suggestions').addClass('active');  // Mostra i suggerimenti
+                                data.forEach(function(title) {
+                                    $('#suggestions').append('<div class="suggestion">' + title + '</div>');
+                                });
+                            } else {
+                                $('#suggestions').removeClass('active');  // Rimuove la visibilità se non ci sono risultati
+                            }
+                        });
+                    } else {
+                        $('#suggestions').empty();  // Pulisce se la query è troppo breve
+                        $('#suggestions').removeClass('active');  // Nasconde i suggerimenti
+                    }
+                });
+
+                // Gestisce la selezione di un suggerimento
+                $(document).on('click', '.suggestion', function() {
+                    $('#title').val($(this).text());
+                    $('#suggestions').empty();  // Pulisce i suggerimenti
+                    $('#suggestions').removeClass('active');  // Nasconde i suggerimenti
+                });
+            });
+
+        </script>
+        
+    {% endblock %}

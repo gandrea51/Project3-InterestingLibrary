@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+    {% block styles %}
+        <link rel="stylesheet" href="/static/css/user.css">        
+        <link rel="stylesheet" href="/static/css/book.css">
+    {% endblock %}
+
+    {% block title %}User{% endblock %}
+
+    {% block main %}
+
+
+        <section class="container user-first-area">
+            <section class="user-first-header">
+                <h2 class="user-header">Gestisci tutti gli utenti</h2>
+                <h4 class="user-subtitle">Esplora, modifica e gestisci gli utenti con facilità</h4>
+            </section>
+        </section>
+
+        <section class="container book-second-area">
+            <img src="/static/images/usecond.jpg" alt="Manager Area Image">
+            <p class="book-descr">
+                Benvenuto nella sezione di gestione degli utenti. Qui puoi visualizzare tutti gli utenti registrati nella nostra applicazione, 
+                indipendentemente dal loro ruolo. Puoi vedere i dati che ogni utente ha inserito e anche modificarli se richiesto.
+                <br>
+                <a href="/user/manager" class="btn-manager">Apri Area Manager</a>
+            </p>
+        </section>
+
+        <section class="container user-third-area">
+            <section class="user-area">
+                {% for user in users %}
+                    <section class="single-user">
+                        <h4 class="user-header">{{user.name}} ({{user.genre}})</h4>
+                        <p class="user-body">
+                            <strong><i class="fa fa-solid fa-hashtag"></i> Email: </strong>{{user.email}}<br>
+                            <strong><i class="fa fa-solid fa-hashtag"></i> Ruolo: </strong>{{user.role}}<br>
+                            <strong><i class="fa fa-solid fa-hashtag"></i> Prestiti effettuati: </strong>{{user.lcount}}<br>
+                        </p>
+                    </section>
+                {% endfor %}
+            </section>
+        </section>
+    {% endblock %}
